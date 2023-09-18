@@ -31,7 +31,9 @@ struct ContentView: View {
         Phones(name: "Nokia", performanceVal: 2, priceVal: 9, hash: 1, durability: 11, goodness: false, pros: "Very Durable and cheap", cons: "Bad performance"),
         Phones(name: "Samsung Galaxy Fold", performanceVal: 6, priceVal: 3, hash: 2, durability: 0, goodness: false, cons: "VERY BAD DURABILITY"),
         Phones(name: "Apple iPhone 14 Pro Max", performanceVal: 9, priceVal: 3, hash: 3, durability: 6, goodness: true, pros: "Good performance", cons: "Expensive"),
-        Phones(name: "Apple iPhone 15 Pro Max", performanceVal: 10, priceVal: 2, hash: 4, durability: 9, goodness: true, pros: "Very good performance", cons: "Very expensive")
+        Phones(name: "Apple iPhone 15 Pro Max", performanceVal: 10, priceVal: 2, hash: 4, durability: 9, goodness: true, pros: "Very good performance", cons: "Very expensive"),
+        Phones(name: "Google Pixel 7 pro", performanceVal: 8, priceVal: 4, hash: 5, durability: 7, goodness: true, pros: "Quite good performance", cons: "A bit expensive"),
+        Phones(name: "Galaxy S23 Ultra", performanceVal: 8, priceVal: 3, hash: 6, durability: 8, goodness: true, pros: "Quite good performance", cons: "A bit expensive")
     ]
     @State var typing = "Please Enter Text Here"
     @State var typing2 = "Please Enter Pros"
