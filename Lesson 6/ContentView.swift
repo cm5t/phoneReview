@@ -2,6 +2,12 @@
   ContentView.swift
  Project: List (Combined: L5, 6,7)
  Created by Dylan Kwok Heng Yi on 14/08/2023. Updated on 21/08/23.
+ 
+ Posted to github on 17/09/23
+ V1.0.0: Removed test variable, added VStack.
+ V2.0.0: Added Pros and Cons variables, revamped Phone UI
+ V2.1.0: Added 2 new phones
+ 
 */
 
 import SwiftUI
@@ -14,9 +20,9 @@ struct Phones: Identifiable{
     var hash: Int
     var durability: Int
     var goodness: Bool
-    var test:String=""
     var pros: String="No Pros"
     var cons: String="No Cons"
+    var batteryLife: Int
 }
 
 struct ContentView: View {
@@ -26,14 +32,15 @@ struct ContentView: View {
     @State var count = 0
     @State var count2 = 0
     @State var count3 = 0
+    @State var count4 = 0
     @State var hashtag = 4
     @State var phoneData = [
-        Phones(name: "Nokia", performanceVal: 2, priceVal: 9, hash: 1, durability: 11, goodness: false, pros: "Very Durable and cheap", cons: "Bad performance"),
-        Phones(name: "Samsung Galaxy Fold", performanceVal: 6, priceVal: 3, hash: 2, durability: 0, goodness: false, cons: "VERY BAD DURABILITY"),
-        Phones(name: "Apple iPhone 14 Pro Max", performanceVal: 9, priceVal: 3, hash: 3, durability: 6, goodness: true, pros: "Good performance", cons: "Expensive"),
-        Phones(name: "Apple iPhone 15 Pro Max", performanceVal: 10, priceVal: 2, hash: 4, durability: 9, goodness: true, pros: "Very good performance", cons: "Very expensive"),
-        Phones(name: "Google Pixel 7 pro", performanceVal: 8, priceVal: 4, hash: 5, durability: 7, goodness: true, pros: "Quite good performance", cons: "A bit expensive"),
-        Phones(name: "Galaxy S23 Ultra", performanceVal: 8, priceVal: 3, hash: 6, durability: 8, goodness: true, pros: "Quite good performance", cons: "A bit expensive")
+        Phones(name: "Nokia", performanceVal: 2, priceVal: 9, hash: 1, durability: 11, goodness: false, pros: "Very Durable and cheap, long battery life", cons: "Very Poor performance", batteryLife: 22),
+        Phones(name: "Samsung Galaxy Fold", performanceVal: 6, priceVal: 3, hash: 2, durability: 0, goodness: false, pros: "Not bad battery life", cons: "VERY BAD DURABILITY", batteryLife: 10),
+        Phones(name: "Apple iPhone 14 Pro Max", performanceVal: 9, priceVal: 3, hash: 3, durability: 6, goodness: true, pros: "Good performance and battery life", cons: "Expensive", batteryLife: 9),
+        Phones(name: "Apple iPhone 15 Pro Max", performanceVal: 10, priceVal: 2, hash: 4, durability: 9, goodness: true, pros: "Very good performance and insane battery life", cons: "Very expensive", batteryLife: 12),
+        Phones(name: "Google Pixel 7 pro", performanceVal: 8, priceVal: 4, hash: 5, durability: 7, goodness: true, pros: "Quite good performance", cons: "A bit expensive and not very good battery life", batteryLife: 6),
+        Phones(name: "Galaxy S23 Ultra", performanceVal: 8, priceVal: 3, hash: 6, durability: 8, goodness: true, pros: "Quite good performance", cons: "A bit expensive", batteryLife: 7)
     ]
     @State var typing = "Please Enter Text Here"
     @State var typing2 = "Please Enter Pros"
@@ -56,6 +63,7 @@ struct ContentView: View {
                                 Text("Performance: \(phone.performanceVal.wrappedValue)/10")
                                 Text("Price \(phone.priceVal.wrappedValue)/10")
                                 Text("Durability: \(phone.durability.wrappedValue)/10")
+                                Text("Battery Life: \(phone.batteryLife.wrappedValue) hours")
                                 Text("Is it worth it to buy? \(phone.goodness.wrappedValue.description)")
                                 Text("Pros: \(phone.pros.wrappedValue.description)")
                                 Text("Cons: \(phone.cons.wrappedValue.description)")
@@ -98,6 +106,8 @@ struct ContentView: View {
                                     .padding(.horizontal)
                                 Stepper("Durability", value: $count3)
                                     .padding(.horizontal)
+                                Stepper("Battery Life - hrs", value: $count4)
+                                    .padding(.horizontal)
                                 Text("\(count)")
                                     .offset(y:-113)
                                 Text("\(count2)")
@@ -106,10 +116,11 @@ struct ContentView: View {
                                     .offset(y:-72)
                                 Button {
                                     hashtag += 1
-                                    phoneData.append(Phones(name: typing, performanceVal: count, priceVal: count2, hash: hashtag, durability: count3, goodness: toggle, pros: typing2, cons: typing3))
+                                    phoneData.append(Phones(name: typing, performanceVal: count, priceVal: count2, hash: hashtag, durability: count3, goodness: toggle, pros: typing2, cons: typing3, batteryLife: count4))
                                     count = 0
                                     count2 = 0
                                     count3 = 0
+                                    count4 = 0
                                     toggle = false
                                     typing = "Please Enter Text Here"
                                     typing2 = "Please Enter Pros"
